@@ -1,21 +1,30 @@
+/* Estilo geral para responsividade */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
 
-/* Estilo para a área do jogo */
+/* Fundo do jogo */
 #fundo {
     position: absolute;
-    top: 5vw;
+    top: 5vh;
     left: 5vw;
     width: 90vw;
-    height: 40vw;
+    height: 50vh; /* Ajusta altura para proporções melhores em telas menores */
     background-color: black;
     text-align: center;
     color: aliceblue;
 }
 
+/* Instruções do jogo */
 #instrucao {
     position: absolute;
-    top: 2vw;
-    left: 7vw;
-    font-size: 0.8em;
+    top: 2vh;
+    left: 5vw;
+    font-size: 1em;
     color: yellow;
     font-weight: bold;
     text-align: center;
@@ -33,8 +42,8 @@
 /* Estilo para as figuras */
 .figura {
     position: absolute;
-    width: 10vw;
-    height: 10vw;
+    width: 12vw;
+    height: 12vw;
     background-color: gray;
     color: black;
     text-align: center;
@@ -45,37 +54,37 @@
     z-index: 2; /* Mantém as figuras à frente */
 }
 
-/* Estilo para o objetivo escondido */
+/* Objetivo escondido */
 #div2 {
     position: absolute;
-    width: 5vw;
-    height: 5vw;
+    width: 8vw;
+    height: 8vw;
     background-color: green;
     z-index: 1; /* Objetivo atrás das figuras */
     visibility: hidden; /* Oculta div2 inicialmente */
 }
 
-/* Estilo para o personagem controlado */
+/* Personagem controlado */
 #div1 {
     position: absolute;
-    top: 2vw;
-    left: 1vw;
-    width: 5vw;
-    height: 5vw;
+    top: 5vh;
+    left: 2vw;
+    width: 8vw;
+    height: 8vw;
     background-color: blue;
     z-index: 3; /* Div1 sempre à frente */
 }
 
+/* Botão de reinício */
 #reiniciar {
     margin-left: 5px;
 }
 
-
-/* Estilo para a nova figura que aparece após a colisão */
+/* Nova figura exibida após colisão */
 .nova-figura {
     position: absolute;
-    width: 10vw;
-    height: 10vw;
+    width: 12vw;
+    height: 12vw;
     background-color: red;
     color: white;
     text-align: center;
@@ -86,21 +95,79 @@
     z-index: 3; /* A nova figura será exibida no topo */
 }
 
-/* Estilo para o painel de controle */
+/* Painel de controle */
 .painel {
     position: absolute;
-    top: 46vw;
-    left: 10vw;
+    top: calc(50vh + 5vh); /* Ajusta painel abaixo do fundo do jogo */
+    left: 5vw;
+    width: 90vw;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }
 
-/* Estilo para a mensagem de conclusão do jogo */
+/* Botões do painel */
+.painel button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.painel button:hover {
+    background-color: #45a049;
+}
+
+/* Mensagem de conclusão */
 #mensagem {
     position: absolute;
-    top: 5vw;
-    left: 7vw;
-    font-size: 1.2em;
+    top: 5vh;
+    left: 5vw;
+    font-size: 1.5em;
     color: yellow;
     font-weight: bold;
     text-align: center;
+    width: 90vw;
+}
+
+/* Responsividade para tablets e celulares */
+@media (max-width: 768px) {
+    /* Ajusta figuras, personagem e nova figura */
+    .figura, #div1, #div2, .nova-figura {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    /* Painel de controle */
+    .painel button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    #mensagem {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajusta figuras, personagem e nova figura */
+    .figura, #div1, #div2, .nova-figura {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    /* Painel de controle */
+    .painel button {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+
+    #mensagem {
+        font-size: 1em;
+    }
 }
