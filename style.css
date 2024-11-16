@@ -14,8 +14,8 @@
 #instrucao {
     position: absolute;
     top: 2vw;
-    left: 7vw;
-    font-size: 0.8em;
+    left: 20vw;
+    font-size: 1em;
     color: yellow;
     font-weight: bold;
     text-align: center;
@@ -23,7 +23,20 @@
 
 #vamoslah {
     visibility: hidden; /* Oculta a div inicialmente */
-    font-size: 1.5em;
+    top: 2vw;
+    font-size: 1em;
+    color: yellow;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo para a mensagem de conclusão do jogo */
+#mensagem {
+    position: absolute;
+    top: 5vw;
+    left: 15vw;
+    font-size: 1em;
     color: yellow;
     font-weight: bold;
     text-align: center;
@@ -45,21 +58,12 @@
     z-index: 2; /* Mantém as figuras à frente */
 }
 
-/* Estilo para o objetivo escondido */
-#div2 {
-    position: absolute;
-    width: 5vw;
-    height: 5vw;
-    background-color: green;
-    z-index: 1; /* Objetivo atrás das figuras */
-    visibility: hidden; /* Oculta div2 inicialmente */
-}
 
 /* Estilo para o personagem controlado */
 #div1 {
     position: absolute;
     top: 2vw;
-    left: 1vw;
+    left: 3vw;
     width: 5vw;
     height: 5vw;
     background-color: blue;
@@ -94,16 +98,7 @@
     text-align: center;
 }
 
-/* Estilo para a mensagem de conclusão do jogo */
-#mensagem {
-    position: absolute;
-    top: 5vw;
-    left: 7vw;
-    font-size: 1.2em;
-    color: yellow;
-    font-weight: bold;
-    text-align: center;
-}
+
 
 @media (max-width: 480px) {
     /* Ajusta figuras, personagem e nova figura */
@@ -112,43 +107,38 @@
         position: absolute;
     }
 
-    #instrucao {
-        font-size: 0.5em;
-    }
+    
 
     
 }
 
-/* Ajustes para celulares em modo horizontal */
+/* Ajustes para dispositivos em modo horizontal (landscape) */
 @media (orientation: landscape) {
     #fundo {
-        width: 70vw; /* Ocupa 70% da largura da tela para deixar espaço para os controles */
+        width: 70vw; /* Ocupa 70% da largura da tela */
         height: 90vh; /* Ajusta a altura para caber na tela */
-        left: 5vw; /* Mantém o jogo centralizado horizontalmente */
+        left: 5vw; /* Centraliza horizontalmente */
     }
 
     .painel {
         position: absolute;
-        top: 10vh; /* Centraliza verticalmente os controles ao lado do jogo */
-        left: 77vw; /* Coloca os controles à direita do fundo */
-        width: 20vw; /* Ajusta a largura dos controles */
-        display: flex;
-        flex-direction: column;
-        gap: 10px; /* Espaçamento entre os botões */
-        text-align: center;
+        top: 15vh;
+        left: 77vw;
+        gap: 5px; /* Diminui o espaçamento no modo paisagem */
     }
 
     .painel button {
-        padding: 10px; /* Ajusta o tamanho dos botões */
-        font-size: 1rem; /* Ajusta o tamanho do texto dos botões */
+        padding: 5px;
+        font-size: 0.8rem;
+        min-width: 60px; /* Reduz o tamanho mínimo dos botões no modo paisagem */
     }
 
     #instrucao {
-        font-size: 0.9rem; /* Reduz o tamanho da instrução */
+        
     }
 
     #mensagem {
-        font-size: 1rem; /* Ajusta o tamanho da mensagem */
+        
     }
 
     #div1 {
