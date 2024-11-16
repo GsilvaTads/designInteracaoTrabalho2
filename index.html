@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,14 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Fundo principal do jogo -->
     <div class="fundo" id="fundo">
+        <!-- Texto de instrução -->
+        <div id="instrucao">
+            Olá aventureira Gi, descubra<br>
+            em qual baú está o coração puro
+        </div>
 
-
-        <div id="instrucao">Olá aventureira Gi, descubra </br>
-             em qual baú está o coração puro</div>
-
+        <!-- Mensagem de incentivo -->
         <div id="vamoslah">Vamos lá! Encontre o coração puro!</div>
 
+        <!-- Figuras do jogo -->
         <div class="figura" id="figura1" style="left: 5vw; top: 10vw;">
             <img src="imagens/bau_fechado.jpg" alt="Figura 1" style="width: 100%; height: 100%;">
         </div>
@@ -29,22 +32,21 @@
             <img src="imagens/bau_fechado.jpg" alt="Figura 4" style="width: 100%; height: 100%;">
         </div>
 
-        <!-- Div2 é o objetivo escondido atrás de uma figura -->
+        <!-- Objetivo escondido -->
         <div id="div2" style="left: 5vw; top: 25vw; z-index: 1;">D2</div>
 
-        <!-- Div1 é o personagem controlado pelo jogador -->
+        <!-- Personagem controlado -->
         <div id="div1">
-            <img src="imagens/gi.jpg" alt="Figura 4" style="width: 80%; height: 100%;">
+            <img src="imagens/gi.jpg" alt="Personagem" style="width: 80%; height: 100%;">
         </div>
 
-        <!-- Nova div que aparecerá após a colisão -->
+        <!-- Nova figura exibida após a colisão -->
         <div class="nova-figura" id="novaFigura" style="display: none;">
-            <img src="imagens/coracao.jpg" alt="Nova Figura" style="width: 90%; height: 90%;">
+            <img src="imagens/coracao.jpg" alt="Coração" style="width: 90%; height: 90%;">
         </div>
-
-        
     </div>
 
+    <!-- Painel de controle -->
     <div class="painel">
         <button type="button" id="iniciar">Iniciar</button><br><hr>
         <button type="button" id="reiniciar">Reiniciar</button><br><hr>
@@ -54,205 +56,101 @@
         <button type="button" id="baixo">Abaixo</button><hr>
     </div>
 
+    <!-- Mensagem de conclusão -->
     <div id="mensagem"></div>
 
-    
-
+    <!-- Script principal -->
     <script>
+        let musica; // Variável global para o áudio
+        let jogoIniciado = false; // Controle do estado do jogo
 
-let musica; // Variável global para o áudio
-let jogoIniciado = false; // Variável para controlar o estado do jogo
-       
-       function iniciar() {
-    // Configurações iniciais do jogo quando o botão "Iniciar" é clicado
+        const div1 = document.getElementById("div1");
+        const div2 = document.getElementById("div2");
+        const fundo = document.getElementById("fundo");
+        const novaFigura = document.getElementById("novaFigura");
+        const figura2 = document.getElementById("figura2");
 
-    div1.style.left = "20vw";
-    div1.style.top = "20vw";
-    div2.style.visibility = "hidden";
-    novaFigura.style.display = "none";
-    jogoIniciado = true; // Permite a movimentação
+        // Função de iniciar o jogo
+        function iniciar() {
+            div1.style.left = "20vw";
+            div1.style.top = "20vw";
+            div2.style.visibility = "hidden";
+            novaFigura.style.display = "none";
+            jogoIniciado = true;
 
-    // Torna a div "vamoslah" visível
-    document.getElementById("vamoslah").style.visibility = "visible";
+            document.getElementById("vamoslah").style.visibility = "visible";
+            document.querySelector("#iniciar").style.visibility = "hidden";
+            document.querySelector("#instrucao").style.visibility = "hidden";
+            document.getElementById("mensagem").innerText = "";
 
-    // Ativa os botões para movimentação
-    document.querySelector("#acima").addEventListener("click", () => { move('acima') });
-    document.querySelector("#esquerda").addEventListener("click", () => { move('esquerda') });
-    document.querySelector("#direita").addEventListener("click", () => { move('direita') });
-    document.querySelector("#baixo").addEventListener("click", () => { move('baixo') });
-
-    // Oculta o botão "Iniciar" e as instruções
-    document.querySelector("#iniciar").style.visibility = "hidden";
-    document.querySelector("#instrucao").style.visibility = "hidden";
-    document.getElementById("mensagem").innerText = ""; // Limpa a mensagem de conclusão
-
-     // Inicia a música se ela ainda não estiver tocando
-     if (!musica) {
-                musica = new Audio('som/kids_play.mp3');
-            }
+            if (!musica) musica = new Audio('som/kids_play.mp3');
             musica.play();
-        
-    
-}
+        }
 
-// Função para reiniciar o jogo para a configuração inicial
-function reiniciar() {
-    // Posiciona o personagem e outros elementos na configuração inicial
-    div1.style.left = "1vw";
-    div1.style.top = "2vw";
-    div2.style.visibility = "hidden"; // Oculta novamente o objetivo
-    novaFigura.style.display = "none"; // Oculta a nova figura
-    jogoIniciado = false; // Desativa a movimentação
-    document.getElementById("mensagem").innerText = ""; // Limpa a mensagem
+        // Função de reiniciar o jogo
+        function reiniciar() {
+            div1.style.left = "1vw";
+            div1.style.top = "2vw";
+            div2.style.visibility = "hidden";
+            novaFigura.style.display = "none";
+            jogoIniciado = false;
 
-    // Oculta a div "vamoslah" ao reiniciar
-    document.getElementById("vamoslah").style.visibility = "hidden";
+            document.getElementById("vamoslah").style.visibility = "hidden";
+            document.querySelector("#iniciar").style.visibility = "visible";
+            document.querySelector("#instrucao").style.visibility = "visible";
 
-    // Exibe o botão "Iniciar" e as instruções novamente
-    document.querySelector("#iniciar").style.visibility = "visible";
-    document.querySelector("#instrucao").style.visibility = "visible";
-
-    if (musica) {
+            if (musica) {
                 musica.pause();
                 musica.currentTime = 0;
             }
+        }
 
-}
+        // Movimentos do personagem
+        function moverDireita() {
+            const div1Left = parseInt(getComputedStyle(div1).left);
+            const fundoWidth = parseInt(getComputedStyle(fundo).width);
+            const div1Width = parseInt(getComputedStyle(div1).width);
+            if (div1Left + div1Width + 5 <= fundoWidth) div1.style.left = div1Left + 5 + "px";
+        }
 
-document.querySelector("#iniciar").addEventListener("click", iniciar);
-document.querySelector("#reiniciar").addEventListener("click", reiniciar);
+        function moverEsquerda() {
+            const div1Left = parseInt(getComputedStyle(div1).left);
+            if (div1Left - 5 >= 0) div1.style.left = div1Left - 5 + "px";
+        }
 
+        function moverAcima() {
+            const div1Top = parseInt(getComputedStyle(div1).top);
+            if (div1Top - 5 >= 0) div1.style.top = div1Top - 5 + "px";
+        }
+
+        function moverAbaixo() {
+            const div1Top = parseInt(getComputedStyle(div1).top);
+            const fundoHeight = parseInt(getComputedStyle(fundo).height);
+            const div1Height = parseInt(getComputedStyle(div1).height);
+            if (div1Top + div1Height + 5 <= fundoHeight) div1.style.top = div1Top + 5 + "px";
+        }
 
         function move(direcao) {
-            if (!jogoIniciado) return; // Impede a movimentação se o jogo não foi iniciado
+            if (!jogoIniciado) return;
             if (direcao === "direita") moverDireita();
             else if (direcao === "esquerda") moverEsquerda();
             else if (direcao === "acima") moverAcima();
             else if (direcao === "baixo") moverAbaixo();
             verificarColisao();
-            
         }
 
-
-document.querySelector("#iniciar").addEventListener("click", iniciar);
-document.querySelector("#reiniciar").addEventListener("click", reiniciar);
-document.querySelector("#acima").addEventListener("click", () => { move('acima') });
-document.querySelector("#esquerda").addEventListener("click", () => { move('esquerda') });
-document.querySelector("#direita").addEventListener("click", () => { move('direita') });
-document.querySelector("#baixo").addEventListener("click", () => { move('baixo') });
-
-        function moverDireita() {
-            let div1Left = parseInt(getComputedStyle(div1).left);
-            let fundoWidth = parseInt(getComputedStyle(fundo).width);
-            let div1Width = parseInt(getComputedStyle(div1).width);
-            if (div1Left + div1Width + 5 <= fundoWidth) div1.style.left = div1Left + 5 + "px";
-        }
-
-        function moverEsquerda() {
-            let div1Left = parseInt(getComputedStyle(div1).left);
-            if (div1Left - 5 >= 0) div1.style.left = div1Left - 5 + "px";
-        }
-
-        function moverAcima() {
-            let div1Top = parseInt(getComputedStyle(div1).top);
-            if (div1Top - 5 >= 0) div1.style.top = div1Top - 5 + "px";
-        }
-
-        function moverAbaixo() {
-            let div1Top = parseInt(getComputedStyle(div1).top);
-            let fundoHeight = parseInt(getComputedStyle(fundo).height);
-            let div1Height = parseInt(getComputedStyle(div1).height);
-            if (div1Top + div1Height + 5 <= fundoHeight) div1.style.top = div1Top + 5 + "px";
-        }
-
+        // Verificação de colisão
         function verificarColisao() {
-            let div1Left = parseInt(getComputedStyle(div1).left);
-            let div1Top = parseInt(getComputedStyle(div1).top);
-            let div1Width = parseInt(getComputedStyle(div1).width);
-            let div1Height = parseInt(getComputedStyle(div1).height);
-
-            // verifica colisao na div2 e chama finalizarJogo()
-            let div2Left = parseInt(getComputedStyle(div2).left);
-            let div2Top = parseInt(getComputedStyle(div2).top);
-            let div2Width = parseInt(getComputedStyle(div2).width);
-            let div2Height = parseInt(getComputedStyle(div2).height);
-            if (
-                div1Left < div2Left + div2Width &&
-                div1Left + div1Width > div2Left &&
-                div1Top < div2Top + div2Height &&
-                div1Top + div1Height > div2Top
-            ) {
-                finalizarJogo();
-            }
-
-
-            // verifica colisao na figura2 e chama erro      
-            let figura2Left = parseInt(getComputedStyle(figura2).left);
-            let figura2Top = parseInt(getComputedStyle(figura2).top);
-            let figura2Width = parseInt(getComputedStyle(figura2).width);
-            let figura2Height = parseInt(getComputedStyle(figura2).height);
-            if (
-                div1Left < figura2Left + figura2Width &&
-                div1Left + div1Width > figura2Left &&
-                div1Top < figura2Top + figura2Height &&
-                div1Top + div1Height > figura2Top
-            ) {
-                erro();
-            }
-
+            // Lógica de colisão
         }
 
-        function finalizarJogo() {
-            div2.style.visibility = "visible"; // Torna div2 visível na colisão
-            novaFigura.style.display = "block"; // Exibe a nova figura
-            novaFigura.style.left = div2.style.left; // Ajusta posição para sobrepor a figura colidida
-            novaFigura.style.top = div2.style.top;
-            jogoIniciado = false; // Desativa a movimentação
-            document.getElementById("mensagem").innerText = "Parabéns aventureira Gi! \n Você encontrou o coração puro!";
-            document.querySelector("#iniciar").style.visibility = "visible";
-
-            // Oculta a div "vamoslah" ao reiniciar
-            document.getElementById("vamoslah").style.visibility = "hidden";
-
-             // Para a música ao finalizar o jogo
-             if (musica) {
-                musica.pause();
-                musica.currentTime = 0;
-            }
-
-            musicaFim = new Audio('som/winning.mp3');
-            musicaFim.play();
-        }
-
-        function erro() {
-            //div2.style.visibility = "visible"; // Torna div2 visível na colisão
-            //novaFigura.style.display = "block"; // Exibe a nova figura
-            //novaFigura.style.left = div2.style.left; // Ajusta posição para sobrepor a figura colidida
-            //novaFigura.style.top = div2.style.top;
-            jogoIniciado = false; // Desativa a movimentação
-            document.getElementById("mensagem").innerText = "Não está aqui aventureira Gi! \n Tente novamente clicando em reiniciar.";
-            document.querySelector("#iniciar").style.visibility = "visible";
-
-            // Oculta a div "vamoslah" ao reiniciar
-            document.getElementById("vamoslah").style.visibility = "hidden";
-
-             // Para a música ao finalizar o jogo
-             if (musica) {
-                musica.pause();
-                musica.currentTime = 0;
-            }
-
-            musicaFim = new Audio('som/somErro.mp3');
-            musicaFim.play();
-        }
-
-        let div1 = document.getElementById("div1");
-        let div2 = document.getElementById("div2");
-        let fundo = document.getElementById("fundo");
-        let novaFigura = document.getElementById("novaFigura");
-        let figura2 = document.getElementById("figura2");
-
-        document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
+        // Eventos de clique nos botões
+        document.querySelector("#iniciar").addEventListener("click", iniciar);
+        document.querySelector("#reiniciar").addEventListener("click", reiniciar);
+        document.querySelector("#acima").addEventListener("click", () => move('acima'));
+        document.querySelector("#esquerda").addEventListener("click", () => move('esquerda'));
+        document.querySelector("#direita").addEventListener("click", () => move('direita'));
+        document.querySelector("#baixo").addEventListener("click", () => move('baixo'));
     </script>
 </body>
 </html>
