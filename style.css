@@ -172,7 +172,7 @@
     
         /* Botões no painel */
         .painel button {
-            height: 15vw;
+            height: 10vw;
             width: 15vw;
             font-size: 0.9rem;
         }
@@ -201,16 +201,16 @@
     
         .painel {
             position: absolute;
-            top: 50%; /* Centraliza verticalmente */
+            
             left: calc(5vw + 70vw + 2vw); /* Posiciona à direita do fundo com margem */
             transform: translateY(-50%); /* Ajuste para centralização vertical */
-            width: 20vw; /* Define uma largura proporcional */
+            width: 15vw; /* Define uma largura proporcional */
             height: auto; /* Ajusta a altura ao conteúdo */
             display: flex;
             flex-direction: column; /* Botões em coluna */
             justify-content: center;
             align-items: center;
-            gap: 10px; /* Espaçamento entre os botões */
+            gap: 2px; /* Espaçamento entre os botões */
         }
     
         .painel button {
