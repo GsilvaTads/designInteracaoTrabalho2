@@ -71,9 +71,10 @@ let erros = 0;
   
        
       
-function iniciar() {
-    div1.style.left = ""; // Respeita o estilo do CSS
-    div1.style.top = "";  // Respeita o estilo do CSS
+    
+    function iniciar() {
+    div1.style.left = "30vw";
+    div1.style.top = "20vw";
     novaFigura.style.display = "none";
     jogoIniciado = true;
 
@@ -91,7 +92,6 @@ function iniciar() {
     }
     musica.play();
 }
-
 
 
 
@@ -293,12 +293,15 @@ window.addEventListener('load', () => {
     document.querySelector("#reiniciar").addEventListener("click", reiniciar);
 });
 
+
+
+
         let div1 = document.getElementById("div1");
         let fundo = document.getElementById("fundo");
         let novaFigura = document.getElementById("novaFigura");
         let figura2 = document.getElementById("figura2");
 
-        
+        document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
     </script>
 </body>
 </html>
