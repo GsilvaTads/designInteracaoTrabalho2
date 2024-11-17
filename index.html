@@ -40,6 +40,11 @@
             <img src="imagens/coracao.jpg" alt="Nova Figura" style="width: 90%; height: 90%;">
         </div>
 
+        <div id="placar">SCORE
+            <p>Acertos: <span id="contador-acertos">0</span></p>
+            <p>Erros: <span id="contador-erros">0</span></p>
+        </div>
+
         
     </div>
 
@@ -60,6 +65,10 @@
 
     let musica; // Variável global para o áudio
     let jogoIniciado = false; // Variável para controlar o estado do jogo
+
+    let acertos = 0;
+let erros = 0;
+  
        
       
     
@@ -84,19 +93,27 @@
     musica.play();
 }
 
+
+
 function reiniciar() {
     div1.style.left = "1vw";
     div1.style.top = "2vw";
     novaFigura.style.display = "none";
     jogoIniciado = false;
 
-    document.getElementById("mensagem").innerText = "";
+    acertos = 0; // Reseta o contador de acertos
+    erros = 0;   // Reseta o contador de erros
+    document.getElementById("contador-acertos").innerText = acertos;
+    document.getElementById("contador-erros").innerText = erros;
 
+    // Limpa os valores do localStorage
+    localStorage.removeItem('acertos');
+    localStorage.removeItem('erros');
+
+    document.getElementById("mensagem").innerText = "";
     document.getElementById("vamoslah").style.visibility = "hidden";
     document.querySelector("#iniciar").style.visibility = "visible";
     document.querySelector("#instrucao").style.visibility = "visible";
-    // Oculta a div "vamoslah"
-    document.getElementById("vamoslah").style.visibility = "hidden";
 
     definirFiguraVencedora(); // Reconfigura a figura vencedora
 
@@ -105,6 +122,8 @@ function reiniciar() {
         musica.currentTime = 0;
     }
 }
+
+
 
 
     document.querySelector("#iniciar").addEventListener("click", iniciar);
@@ -201,8 +220,16 @@ function reiniciar() {
     });
 }
 
+
+
 function finalizarJogo(figura) {
-    // Exibe a nova figura (coração puro) sobre a figura vencedora
+    acertos++; // Incrementa o contador de acertos
+    document.getElementById("contador-acertos").innerText = acertos; // Atualiza o placar
+
+    // Salva o número de acertos no localStorage
+    localStorage.setItem('acertos', acertos);
+
+    // Resto do código existente...
     novaFigura.style.display = "block";
     novaFigura.style.left = figura.style.left;
     novaFigura.style.top = figura.style.top;
@@ -210,7 +237,6 @@ function finalizarJogo(figura) {
     jogoIniciado = false; // Desativa a movimentação
     document.getElementById("mensagem").innerText = "Parabéns aventureira Gi! \n Você encontrou o coração puro!";
     document.querySelector("#iniciar").style.visibility = "visible";
-    // Oculta a div "vamoslah"
     document.getElementById("vamoslah").style.visibility = "hidden";
 
     if (musica) {
@@ -222,11 +248,20 @@ function finalizarJogo(figura) {
     musicaFim.play();
 }
 
+
+
+
 function erro(figura) {
+    erros++; // Incrementa o contador de erros
+    document.getElementById("contador-erros").innerText = erros; // Atualiza o placar
+
+    // Salva o número de erros no localStorage
+    localStorage.setItem('erros', erros);
+
+    // Resto do código existente...
     jogoIniciado = false; // Desativa a movimentação
     document.getElementById("mensagem").innerText = "Não foi desta vez! \n Tente novamente clicando em reiniciar.";
     document.querySelector("#iniciar").style.visibility = "visible";
-    // Oculta a div "vamoslah"
     document.getElementById("vamoslah").style.visibility = "hidden";
 
     if (musica) {
@@ -237,6 +272,28 @@ function erro(figura) {
     const musicaErro = new Audio('som/somErro.mp3');
     musicaErro.play();
 }
+
+window.addEventListener('load', () => {
+    // Recupera os valores de acertos e erros do localStorage
+    const acertosSalvos = localStorage.getItem('acertos');
+    const errosSalvos = localStorage.getItem('erros');
+
+    // Se houver valores salvos, usa-os
+    if (acertosSalvos !== null) {
+        acertos = parseInt(acertosSalvos);
+        document.getElementById("contador-acertos").innerText = acertos;
+    }
+    if (errosSalvos !== null) {
+        erros = parseInt(errosSalvos);
+        document.getElementById("contador-erros").innerText = erros;
+    }
+
+    // Adiciona as funções de eventos para os botões (repetindo o código existente)
+    document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
+    document.querySelector("#reiniciar").addEventListener("click", reiniciar);
+});
+
+
 
 
         let div1 = document.getElementById("div1");
