@@ -178,10 +178,11 @@
         }
 
         #div1 {
-            width: 8vw; /* Ajusta o tamanho do personagem no modo horizontal */
-            height:10vw;   
-            left: 30vw;
-        }
+                width: 8vw;
+                height: 10vw;
+                left: 23vw; /* Centraliza horizontalmente entre as figuras no layout mobile */
+                top: 22vw;  /* Ajusta a posição vertical */
+            }
 
         #instrucao {
             top: 15vw;
@@ -228,9 +229,11 @@
             /* Estilo adicional pode ser adicionado aqui */
         }
     
-        #div1 {
-            width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
+     #div1 {
+            width: 7vw;
             height: 7vw;
+            left: 26vw; /* Centraliza horizontalmente entre as figuras no layout paisagem */
+            top: 20vw;  /* Ajusta a posição vertical */
         }
     
         .figura {
