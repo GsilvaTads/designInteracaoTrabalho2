@@ -201,7 +201,7 @@
     
         .painel {
             position: absolute;
-            
+             top: 50%; /* Centraliza verticalmente */
             left: calc(5vw + 70vw + 2vw); /* Posiciona à direita do fundo com margem */
             transform: translateY(-50%); /* Ajuste para centralização vertical */
             width: 15vw; /* Define uma largura proporcional */
