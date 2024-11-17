@@ -137,9 +137,8 @@
 		
 		 /* Distribui uniformemente as figuras */
         .figura {
-            width: 15vw; /* Ajusta o tamanho das figuras */
-            height: 15vw;
-            
+            width: 10vw; /* Ajusta o tamanho das figuras */
+            height: 10vw;            
             text-align: center;
             display: flex;
             align-items: center;
@@ -177,17 +176,18 @@
             font-size: 0.9rem;
         }
 
-        #div1 {
-                width: 8vw;
-                height: 10vw;
-                left: 23vw; /* Centraliza horizontalmente entre as figuras no layout mobile */
+            #div1 {
+                width: 5vw;
+                height: 5vw;
+                left: 30vw; /* Centraliza horizontalmente entre as figuras no layout mobile */
                 top: 22vw;  /* Ajusta a posição vertical */
             }
+        
 
         #instrucao {
-            top: 15vw;
-            left: 10vw;
-            font-size: 0.7rem; 
+            top: 2vw;
+            left: 15vw;
+            font-size: 0.8rem; 
         }
     }
 
@@ -205,7 +205,7 @@
             top: 55%; /* Centraliza verticalmente */
             left: calc(5vw + 70vw + 2vw); /* Posiciona à direita do fundo com margem */
             transform: translateY(-45%); /* Ajuste para centralização vertical */
-            width: 10vw; /* Define uma largura proporcional */
+            width: 1vw; /* Define uma largura proporcional */
             height: auto; /* Ajusta a altura ao conteúdo */
             display: flex;
             flex-direction: column; /* Botões em coluna */
@@ -214,7 +214,7 @@
             gap: 2px; /* Espaçamento entre os botões */
         }
     
-      .painel button {
+        .painel button {
             padding: 1px;
             font-size: 0.8rem;
             width: 70%; /* Botões ocupam toda a largura do painel */
@@ -229,9 +229,9 @@
             /* Estilo adicional pode ser adicionado aqui */
         }
     
-     #div1 {
-            width: 7vw;
-            height: 7vw;
+        #div1 {
+            width: 5vw;
+            height: 5vw;
             left: 26vw; /* Centraliza horizontalmente entre as figuras no layout paisagem */
             top: 20vw;  /* Ajusta a posição vertical */
         }
