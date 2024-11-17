@@ -126,8 +126,8 @@
     @media (max-width: 480px) {
 
         #fundo {
-            width: 70vw; /* Ocupa 70% da largura da tela */
-            height: 85vh; /* Ajusta a altura para caber na tela */
+            width: 80vw; /* Ocupa 70% da largura da tela */
+            height: 70vh; /* Ajusta a altura para caber na tela */
             left: 5vw; /* Centraliza horizontalmente */            
         }		
 		
@@ -135,19 +135,14 @@
         .figura {
             width: 15vw; /* Ajusta o tamanho das figuras */
             height: 15vw;
-            color: black;
+            
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             border-radius: 5px; /* Bordas arredondadas */
-            margin-top: 50px;            
-        }
-
-        .figura {
-            width: 8vw; /* Ajusta o tamanho dos baús no modo horizontal */
-            height: 8vw;
+            margin-top: 70px;            
         }
     
        
@@ -155,7 +150,7 @@
         #placar {
             position: relative; /* Para estar dentro do fluxo da div */
             width: 30%; /* 80% da largura da div fundo */
-            margin-top: 150px; /* Espaço acima do placar */
+            margin-top: 200px; /* Espaço acima do placar */
             font-size: 0.7rem;
             text-align: left;
         }
@@ -182,20 +177,17 @@
         }
 
         #div1 {
-            width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
-            height: 7vw;   
+            width: 8vw; /* Ajusta o tamanho do personagem no modo horizontal */
+            height:10vw;   
             left: 30vw;
         }
 
         #instrucao {
-            top: 12vw;
-            left: 5vw;
+            top: 15vw;
+            left: 10vw;
             font-size: 0.7rem; 
         }
     }
-
-
-
 
 
 
