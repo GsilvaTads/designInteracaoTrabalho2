@@ -63,7 +63,7 @@
 #div1 {
     position: absolute;
     top: 2vw;
-    left: 3vw;
+    left: 5vw;
     width: 5vw;
     height: 5vw;
     background-color: blue;
@@ -108,8 +108,7 @@
         padding: 3px;
         border-radius: 8px;
         font-size: 1rem;
-        text-align: left;
-    
+        text-align: left;    
         opacity: 0.8; /* Transparência aplicada a toda a div */
         transform: scale(0.7); /* 80% do tamanho original */
         transform-origin: top right; /* mantém a posição no canto superior direito */
@@ -118,49 +117,87 @@
     }
 
 
-
-
-@media (max-width: 480px) {
-    /* Ajusta figuras, personagem e nova figura */
-
-    #fundo {
-        position: absolute;
-        top: 0;
-    left: 0;
-    width: 100vw; /* 100% da largura da viewport */
-    height: 80vh; /* 100% da altura da viewport */
-    background-color: black;
-    text-align: center;
-    color: aliceblue;
-    }
-
-    #instrucao {
-        font-size: 0.5em;
-    }
-    .painel {
-        position: absolute;
-        top: 90vh;
-        height: 20vh;
-        left: 10vw;
-        gap: 5px; /* Diminui o espaçamento no modo paisagem */
-        bottom: 0;
-        display: flex;
-        justify-content: center;
-        
-    }
-
-    .painel button {
-        height: 10vw;
-    }
-
-    #placar {        
+   
     
-        /* Reduzir o tamanho com escala */
-        transform: scale(0.4); /* 80% do tamanho original */
+
+
+
+    
+    @media (max-width: 480px) {
+
+        #fundo {
+            width: 70vw; /* Ocupa 70% da largura da tela */
+            height: 85vh; /* Ajusta a altura para caber na tela */
+            left: 5vw; /* Centraliza horizontalmente */            
+        }		
+		
+		 /* Distribui uniformemente as figuras */
+        .figura {
+            width: 15vw; /* Ajusta o tamanho das figuras */
+            height: 15vw;
+            color: black;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 5px; /* Bordas arredondadas */
+            margin-top: 50px;            
+        }
+
+        .figura {
+            width: 8vw; /* Ajusta o tamanho dos baús no modo horizontal */
+            height: 8vw;
+        }
+    
+       
+         /* Ajusta o placar */
+        #placar {
+            position: relative; /* Para estar dentro do fluxo da div */
+            width: 30%; /* 80% da largura da div fundo */
+            margin-top: 150px; /* Espaço acima do placar */
+            font-size: 0.7rem;
+            text-align: left;
+        }
+    
+        /* Painel ajustado */
+        .painel {
+            position: absolute;
+            top: 85vh; /* Logo abaixo do fundo */
+            left: 5%;            
+            width: 20vw;
+            height: 20vh;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 2px;
+            
+        }
+    
+        /* Botões no painel */
+        .painel button {
+            height: 10vw;
+            width: 10vw;
+            font-size: 0.9rem;
+        }
+
+        #div1 {
+            width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
+            height: 7vw;   
+            left: 30vw;
+        }
+
+        #instrucao {
+            top: 12vw;
+            left: 5vw;
+            font-size: 0.7rem; 
+        }
     }
 
-      
-}
+
+
+
+
 
 /* Ajustes para dispositivos em modo horizontal (landscape) */
 @media (orientation: landscape) {
@@ -183,7 +220,7 @@
         min-width: 60px; /* Reduz o tamanho mínimo dos botões no modo paisagem */
     }
 
-   #instrucao {
+    #instrucao {
         left: 15vw;
     }
 
