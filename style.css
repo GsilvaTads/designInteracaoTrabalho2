@@ -158,7 +158,7 @@
         /* Painel ajustado */
         .painel {
             position: absolute;
-            top: 70vh; /* Logo abaixo do fundo */
+            top: 30vh; /* Logo abaixo do fundo */
             left: 5%;            
             width: 20vw;
             height: 20vh;
