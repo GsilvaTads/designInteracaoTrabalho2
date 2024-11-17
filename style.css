@@ -137,15 +137,16 @@
 		
 		 /* Distribui uniformemente as figuras */
         .figura {
-            width: 10vw; /* Ajusta o tamanho das figuras */
-            height: 10vw;            
+            width: 15vw; /* Ajusta o tamanho das figuras */
+            height: 15vw;
+            
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             border-radius: 5px; /* Bordas arredondadas */
-            margin-top: 70px;            
+            margin-top: 10px;            
         }
     
        
@@ -176,18 +177,17 @@
             font-size: 0.9rem;
         }
 
-            #div1 {
-                width: 5vw;
-                height: 5vw;
-                left: 30vw; /* Centraliza horizontalmente entre as figuras no layout mobile */
-                top: 22vw;  /* Ajusta a posição vertical */
-            }
-        
+        #div1 {
+            width: 10vw; /* Ajuste o tamanho do personagem */
+            height: 10vw; 
+            left: 30vw; /* Posicionamento adequado */
+            top: 10vw; /* Ajuste a posição conforme necessário */
+        }
 
         #instrucao {
             top: 2vw;
             left: 15vw;
-            font-size: 0.8rem; 
+            font-size: 0.7rem; 
         }
     }
 
@@ -225,15 +225,10 @@
             left: 15vw;
         }
     
-        #mensagem {
-            /* Estilo adicional pode ser adicionado aqui */
-        }
-    
+           
         #div1 {
-            width: 5vw;
-            height: 5vw;
-            left: 26vw; /* Centraliza horizontalmente entre as figuras no layout paisagem */
-            top: 20vw;  /* Ajusta a posição vertical */
+            width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
+            height: 7vw;
         }
     
         .figura {
