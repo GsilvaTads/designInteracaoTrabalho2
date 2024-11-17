@@ -183,8 +183,8 @@
         min-width: 60px; /* Reduz o tamanho mínimo dos botões no modo paisagem */
     }
 
-    #instrucao {
-        
+   #instrucao {
+        left: 15vw;
     }
 
     #mensagem {
