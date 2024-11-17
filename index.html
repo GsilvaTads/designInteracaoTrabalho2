@@ -32,7 +32,7 @@
         
         <!-- Div1 é o personagem controlado pelo jogador -->
         <div id="div1">
-            <img src="imagens/gi.jpg" alt="Figura 4" style="width: 80%; height: 100%;">
+            <img src="imagens/gi.jpg" alt="gi" style="width: 80%; height: 100%;">
         </div>
 
         <!-- Nova div que aparecerá após a colisão -->
@@ -70,8 +70,7 @@
 let erros = 0;
   
        
-
-            
+      
 function iniciar() {
     div1.style.left = ""; // Respeita o estilo do CSS
     div1.style.top = "";  // Respeita o estilo do CSS
@@ -92,7 +91,9 @@ function iniciar() {
     }
     musica.play();
 }
-        
+
+
+
 
 function reiniciar() {
     div1.style.left = "1vw";
@@ -292,15 +293,12 @@ window.addEventListener('load', () => {
     document.querySelector("#reiniciar").addEventListener("click", reiniciar);
 });
 
-
-
-
         let div1 = document.getElementById("div1");
         let fundo = document.getElementById("fundo");
         let novaFigura = document.getElementById("novaFigura");
         let figura2 = document.getElementById("figura2");
 
-        document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
+        
     </script>
 </body>
 </html>
