@@ -213,11 +213,11 @@
             gap: 2px; /* Espaçamento entre os botões */
         }
     
-        .painel button {
+      .painel button {
             padding: 1px;
             font-size: 0.8rem;
-            width: 80%; /* Botões ocupam toda a largura do painel */
-            min-width: 60px; /* Tamanho mínimo para os botões */
+            width: 70%; /* Botões ocupam toda a largura do painel */
+            min-width: 30px; /* Tamanho mínimo para os botões */
         }
     
         #instrucao {
