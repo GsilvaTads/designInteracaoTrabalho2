@@ -70,11 +70,11 @@
 let erros = 0;
   
        
-      
-    
-    function iniciar() {
-    div1.style.left = "20vw";
-    div1.style.top = "20vw";
+
+            
+function iniciar() {
+    div1.style.left = ""; // Respeita o estilo do CSS
+    div1.style.top = "";  // Respeita o estilo do CSS
     novaFigura.style.display = "none";
     jogoIniciado = true;
 
@@ -92,8 +92,7 @@ let erros = 0;
     }
     musica.play();
 }
-
-
+        
 
 function reiniciar() {
     div1.style.left = "1vw";
