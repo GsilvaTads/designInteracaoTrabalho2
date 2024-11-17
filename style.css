@@ -93,11 +93,15 @@
 /* Estilo para o painel de controle */
 .painel {
     position: absolute;
-    top: 46vw;
+    top: 55vh; /* Reduz a distância da parte inferior do #fundo */
     left: 10vw;
-    text-align: center;
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2px;
 }
-
 
     #placar {
         position: absolute;
@@ -155,24 +159,21 @@
             text-align: left;
         }
     
-        /* Painel ajustado */
         .painel {
-            position: absolute;
-            top: 30vh; /* Logo abaixo do fundo */
-            left: 5%;            
-            width: 20vw;
-            height: 20vh;
+            top: 75vh; /* Ajuste o top para aproximar do fundo */
+            left: 10vw;
+            width: 70vw;
+            height: auto;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
-            gap: 2px;
-            
+            gap: 5px;
         }
     
         /* Botões no painel */
         .painel button {
-            height: 10vw;
-            width: 10vw;
+            height: 15vw;
+            width: 15vw;
             font-size: 0.9rem;
         }
 
@@ -191,42 +192,50 @@
 
 
 
-/* Ajustes para dispositivos em modo horizontal (landscape) */
-@media (orientation: landscape) {
-    #fundo {
-        width: 70vw; /* Ocupa 70% da largura da tela */
-        height: 90vh; /* Ajusta a altura para caber na tela */
-        left: 5vw; /* Centraliza horizontalmente */
+    @media (orientation: landscape) {
+        #fundo {
+            width: 70vw; /* Ocupa 70% da largura da tela */
+            height: 90vh; /* Ajusta a altura para caber na tela */
+            left: 5vw; /* Centraliza horizontalmente */
+        }
+    
+        .painel {
+            position: absolute;
+            top: 50%; /* Centraliza verticalmente */
+            left: calc(5vw + 70vw + 2vw); /* Posiciona à direita do fundo com margem */
+            transform: translateY(-50%); /* Ajuste para centralização vertical */
+            width: 20vw; /* Define uma largura proporcional */
+            height: auto; /* Ajusta a altura ao conteúdo */
+            display: flex;
+            flex-direction: column; /* Botões em coluna */
+            justify-content: center;
+            align-items: center;
+            gap: 10px; /* Espaçamento entre os botões */
+        }
+    
+        .painel button {
+            padding: 10px;
+            font-size: 0.8rem;
+            width: 100%; /* Botões ocupam toda a largura do painel */
+            min-width: 60px; /* Tamanho mínimo para os botões */
+        }
+    
+        #instrucao {
+            left: 15vw;
+        }
+    
+        #mensagem {
+            /* Estilo adicional pode ser adicionado aqui */
+        }
+    
+        #div1 {
+            width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
+            height: 7vw;
+        }
+    
+        .figura {
+            width: 8vw; /* Ajusta o tamanho dos baús no modo horizontal */
+            height: 8vw;
+        }
     }
-
-    .painel {
-        position: absolute;
-        top: 15vh;
-        left: 77vw;
-        gap: 5px; /* Diminui o espaçamento no modo paisagem */
-    }
-
-    .painel button {
-        padding: 5px;
-        font-size: 0.8rem;
-        min-width: 60px; /* Reduz o tamanho mínimo dos botões no modo paisagem */
-    }
-
-    #instrucao {
-        left: 15vw;
-    }
-
-    #mensagem {
-        
-    }
-
-    #div1 {
-        width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
-        height: 7vw;
-    }
-
-    .figura {
-        width: 8vw; /* Ajusta o tamanho dos baús no modo horizontal */
-        height: 8vw;
-    }
-}
+    
