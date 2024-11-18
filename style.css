@@ -17,17 +17,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5vw;
-    /* Espaçamento horizontal entre as figuras */
-    margin-bottom: 3vw;
-    /* Espaçamento abaixo das figuras */
+    gap: 5vw;/* Espaçamento horizontal entre as figuras */
+    margin-bottom: 3vw;/* Espaçamento abaixo das figuras */
 }
 
-/* Estilo das figuras */
+/*figuras tela inicial */
 .gi,
 .puro {
-    width: 20vw;
-    /* Tamanho proporcional à largura da tela */
+    width: 20vw; /* Tamanho proporcional à largura da tela */
     height: auto;
 }
 
@@ -35,8 +32,7 @@
 .puro img {
     width: 100%;
     height: auto;
-    border-radius: 10%;
-    /* Opcional: bordas arredondadas */
+    border-radius: 10%; /* bordas arredondadas */
 }
 
 /* Mensagem de boas-vindas */
@@ -77,8 +73,7 @@
 }
 
 #vamoslah {
-    visibility: hidden;
-    /* Oculta a div inicialmente */
+    visibility: hidden; /* Oculta a div no início */
     top: 2vw;
     font-size: 1em;
     color: yellow;
@@ -87,7 +82,7 @@
     margin-top: 20px;
 }
 
-/* Estilo para a mensagem de conclusão do jogo */
+/* mensagem de conclusão do jogo */
 #mensagem {
     position: absolute;
     top: 5vw;
@@ -99,7 +94,6 @@
     margin-top: 20px;
 }
 
-/* Estilo para as figuras */
 .figura {
     position: absolute;
     width: 10vw;
@@ -111,12 +105,11 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    z-index: 2;
-    /* Mantém as figuras à frente */
+    z-index: 2; /* Mantém as figuras à frente */
 }
 
 
-/* Estilo para o personagem controlado */
+/* personagem controlado */
 #div1 {
     position: absolute;
     top: 2vw;
@@ -124,8 +117,7 @@
     width: 5vw;
     height: 5vw;
     background-color: blue;
-    z-index: 3;
-    /* Div1 sempre à frente */
+    z-index: 3; /* Div1 sempre à frente */
 }
 
 #reiniciar {
@@ -146,10 +138,9 @@
     justify-content: center;
     font-weight: bold;
     z-index: 3;
-    /* A nova figura será exibida no topo */
 }
 
-/* Estilo para o painel de controle */
+/* painel de controle */
 .painel {
     position: absolute;
     top: 30vw;
@@ -169,7 +160,6 @@
     font-size: 1rem;
     text-align: left;
     opacity: 0.8;
-    /* Transparência aplicada a toda a div */
     transform: scale(0.7);
     /* 80% do tamanho original */
     transform-origin: top right;
@@ -179,7 +169,7 @@
 }
 
 
-/* Ajustes para dispositivos em modo horizontal (landscape) */
+/* Ajustes para tela na horizontal (landscape) */
 @media (orientation: landscape) {
 
     #jogo {
@@ -219,22 +209,21 @@
     }
 
 
-
     #div1 {
         width: 7vw;
-        /* Ajusta o tamanho do personagem no modo horizontal */
+        /* tamanho do personagem no modo horizontal */
         height: 7vw;
     }
 
     .figura {
         width: 8vw;
-        /* Ajusta o tamanho dos baús no modo horizontal */
+        /* tamanho dos baús no modo horizontal */
         height: 8vw;
     }
 }
 
 
-/* Configuração específica para orientação portrait */
+/* Configuração para tela na posição vertical*/
 @media (orientation: portrait) {
 
     body {
@@ -265,18 +254,18 @@
 
     #bemVindo {
         color: white;
-        /* Texto mais visível no fundo azul */
+        
     }
 
     #aviso {
         color: rgb(236, 233, 18);
-        /* Texto mais visível no fundo azul */
+        
     }
 
 
     #jogo {
         display: none;
-        /* Esconde o jogo */
+        
     }
 
     #mensagem-orientacao {
