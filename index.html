@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+
+    <div id="mensagem-orientacao">
+        Por favor, gire o celular para a posição horizontal para iniciar o jogo.
+    </div>
+
+    <div id="jogo">
+        <!-- Todo o conteúdo do jogo vai aqui -->
+    
+
+
+
+
+
+
     <div class="fundo" id="fundo">
 
 
@@ -59,6 +74,8 @@
 
     <div id="mensagem"></div>
 
+   
+
     
 
     <script>
@@ -79,6 +96,9 @@ let erros = 0;
     jogoIniciado = true;
 
     document.getElementById("vamoslah").style.visibility = "visible";
+
+    // Reseta todas as figuras para a imagem original
+    resetarFiguras();
 
     // Configura a figura vencedora aleatoriamente
     definirFiguraVencedora();
@@ -114,6 +134,9 @@ function reiniciar() {
     document.getElementById("vamoslah").style.visibility = "hidden";
     document.querySelector("#iniciar").style.visibility = "visible";
     document.querySelector("#instrucao").style.visibility = "visible";
+
+    // Reseta todas as figuras para a imagem original
+    resetarFiguras();
 
     definirFiguraVencedora(); // Reconfigura a figura vencedora
 
@@ -258,6 +281,12 @@ function erro(figura) {
     // Salva o número de erros no localStorage
     localStorage.setItem('erros', erros);
 
+    // Altera a imagem da figura para a imagem de erro
+    const img = figura.querySelector('img');
+    if (img) {
+        img.src = "imagens/erro.jpg"; // Substitui a imagem pela de erro
+    }
+
     // Resto do código existente...
     jogoIniciado = false; // Desativa a movimentação
     document.getElementById("mensagem").innerText = "Não foi desta vez! \n Tente novamente clicando em reiniciar.";
@@ -272,6 +301,19 @@ function erro(figura) {
     const musicaErro = new Audio('som/somErro.mp3');
     musicaErro.play();
 }
+
+
+function resetarFiguras() {
+    const figuras = document.querySelectorAll('.figura');
+    figuras.forEach(figura => {
+        const img = figura.querySelector('img');
+        if (img) {
+            img.src = "imagens/bau_fechado.jpg"; // Define a imagem original
+        }
+    });
+}
+
+
 
 window.addEventListener('load', () => {
     // Recupera os valores de acertos e erros do localStorage
@@ -293,15 +335,30 @@ window.addEventListener('load', () => {
     document.querySelector("#reiniciar").addEventListener("click", reiniciar);
 });
 
-
-
-
         let div1 = document.getElementById("div1");
         let fundo = document.getElementById("fundo");
         let novaFigura = document.getElementById("novaFigura");
         let figura2 = document.getElementById("figura2");
 
         document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
+
+
+        function verificarOrientacao() {
+    if (window.innerHeight > window.innerWidth) {
+        // Posição vertical
+        document.getElementById("jogo").style.display = "none";
+        document.getElementById("mensagem-orientacao").style.display = "block";
+    } else {
+        // Posição horizontal
+        document.getElementById("jogo").style.display = "block";
+        document.getElementById("mensagem-orientacao").style.display = "none";
+    }
+}
+
+
     </script>
+
+
+</div>
 </body>
 </html>
