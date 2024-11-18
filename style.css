@@ -1,5 +1,55 @@
 
 /* Estilo para a área do jogo */
+.telaInicial {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5vw;
+}
+
+/* Contêiner para as figuras (Gi e Bau) */
+.figuras-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw; /* Espaçamento horizontal entre as figuras */
+    margin-bottom: 3vw; /* Espaçamento abaixo das figuras */
+}
+
+/* Estilo das figuras */
+.gi, .puro {
+    width: 20vw; /* Tamanho proporcional à largura da tela */
+    height: auto;
+}
+
+.gi img, .puro img {
+    width: 100%;
+    height: auto;
+    border-radius: 10%; /* Opcional: bordas arredondadas */
+}
+
+/* Mensagem de boas-vindas */
+#bemVindo {
+    font-size: 1rem;
+    font-weight: bold;
+    color: navy;
+    margin-bottom: 2vw;
+}
+
+/* Mensagem de aviso */
+#aviso {
+    font-size: 1rem;
+    color: darkred;
+    font-weight: bold;
+    text-align: center;
+}
+
 #fundo {
     position: absolute;
     top: 5vw;
@@ -117,82 +167,16 @@
     }
 
 
-   
-    
-
-
-
-    
-    @media (max-width: 480px) {
-
-        #fundo {
-            width: 80vw; /* Ocupa 70% da largura da tela */
-            height: 70vh; /* Ajusta a altura para caber na tela */
-            left: 5vw; /* Centraliza horizontalmente */            
-        }		
-		
-		 /* Distribui uniformemente as figuras */
-        .figura {
-            width: 15vw; /* Ajusta o tamanho das figuras */
-            height: 15vw;
-            
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            border-radius: 5px; /* Bordas arredondadas */
-            margin-top: 70px;            
-        }
-    
-       
-         /* Ajusta o placar */
-        #placar {
-            position: relative; /* Para estar dentro do fluxo da div */
-            width: 30%; /* 80% da largura da div fundo */
-            margin-top: 200px; /* Espaço acima do placar */
-            font-size: 0.7rem;
-            text-align: left;
-        }
-    
-        /* Painel ajustado */
-        .painel {
-            position: absolute;
-            top: 70vh; /* Logo abaixo do fundo */
-            left:10vw;            
-            width: 20vw;
-            height: 20vh;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            gap: 2px;
-            
-        }
-    
-        /* Botões no painel */
-        .painel button {
-            height: 15vw;
-            width: 15vw;
-            font-size: 0.9rem;
-        }
-
-        #div1 {
-            width: 8vw; /* Ajusta o tamanho do personagem no modo horizontal */
-            height:10vw;   
-            left: 30vw;
-        }
-
-        #instrucao {
-            top: 15vw;
-            left: 10vw;
-            font-size: 0.7rem; 
-        }
-    }
-
-
-
 /* Ajustes para dispositivos em modo horizontal (landscape) */
 @media (orientation: landscape) {
+
+    #jogo {
+        display: block;
+    }
+    #mensagem-orientacao {
+        display: none;
+    }
+
     #fundo {
         width: 70vw; /* Ocupa 70% da largura da tela */
         height: 90vh; /* Ajusta a altura para caber na tela */
@@ -216,9 +200,7 @@
         left: 15vw;
     }
 
-    #mensagem {
-        
-    }
+   
 
     #div1 {
         width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
@@ -232,26 +214,47 @@
 }
 
 
-/* Esconde o jogo e mostra a mensagem no modo vertical */
+/* Configuração específica para orientação portrait */
 @media (orientation: portrait) {
-    #jogo {
-        display: none;
+
+    body {
+        margin: 10;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: blue;
+        color: white;
+        font-size: 1rem;
+        text-align: center;
     }
+
+
+    .telaInicial {
+        background-color: blue;
+        justify-content: center; /* Centraliza tudo na vertical */
+    }
+
+    .figuras-container {
+        flex-direction: row; /* As figuras ficam lado a lado */
+        gap: 4vw; /* Espaçamento entre as figuras */
+    }
+
+    #bemVindo {
+        color: white; /* Texto mais visível no fundo azul */
+    }
+
+    #aviso {
+        color: rgb(236, 233, 18); /* Texto mais visível no fundo azul */
+    }
+
+    
+    #jogo {
+        display: none; /* Esconde o jogo */
+    }
+
     #mensagem-orientacao {
         display: block;
-        text-align: center;
-        font-size: 1.5rem;
-        color: red;
-        margin-top: 20%;
     }
 }
 
-/* Mostra o jogo e esconde a mensagem no modo horizontal */
-@media (orientation: landscape) {
-    #jogo {
-        display: block;
-    }
-    #mensagem-orientacao {
-        display: none;
-    }
-}
