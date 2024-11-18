@@ -230,3 +230,28 @@
         height: 8vw;
     }
 }
+
+
+/* Esconde o jogo e mostra a mensagem no modo vertical */
+@media (orientation: portrait) {
+    #jogo {
+        display: none;
+    }
+    #mensagem-orientacao {
+        display: block;
+        text-align: center;
+        font-size: 1.5rem;
+        color: red;
+        margin-top: 20%;
+    }
+}
+
+/* Mostra o jogo e esconde a mensagem no modo horizontal */
+@media (orientation: landscape) {
+    #jogo {
+        display: block;
+    }
+    #mensagem-orientacao {
+        display: none;
+    }
+}
