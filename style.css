@@ -1,4 +1,3 @@
-
 /* Estilo para a área do jogo */
 .telaInicial {
     position: relative;
@@ -18,20 +17,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5vw; /* Espaçamento horizontal entre as figuras */
-    margin-bottom: 3vw; /* Espaçamento abaixo das figuras */
+    gap: 5vw;
+    /* Espaçamento horizontal entre as figuras */
+    margin-bottom: 3vw;
+    /* Espaçamento abaixo das figuras */
 }
 
 /* Estilo das figuras */
-.gi, .puro {
-    width: 20vw; /* Tamanho proporcional à largura da tela */
+.gi,
+.puro {
+    width: 20vw;
+    /* Tamanho proporcional à largura da tela */
     height: auto;
 }
 
-.gi img, .puro img {
+.gi img,
+.puro img {
     width: 100%;
     height: auto;
-    border-radius: 10%; /* Opcional: bordas arredondadas */
+    border-radius: 10%;
+    /* Opcional: bordas arredondadas */
 }
 
 /* Mensagem de boas-vindas */
@@ -72,7 +77,8 @@
 }
 
 #vamoslah {
-    visibility: hidden; /* Oculta a div inicialmente */
+    visibility: hidden;
+    /* Oculta a div inicialmente */
     top: 2vw;
     font-size: 1em;
     color: yellow;
@@ -105,7 +111,8 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    z-index: 2; /* Mantém as figuras à frente */
+    z-index: 2;
+    /* Mantém as figuras à frente */
 }
 
 
@@ -117,7 +124,8 @@
     width: 5vw;
     height: 5vw;
     background-color: blue;
-    z-index: 3; /* Div1 sempre à frente */
+    z-index: 3;
+    /* Div1 sempre à frente */
 }
 
 #reiniciar {
@@ -137,7 +145,8 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    z-index: 3; /* A nova figura será exibida no topo */
+    z-index: 3;
+    /* A nova figura será exibida no topo */
 }
 
 /* Estilo para o painel de controle */
@@ -149,22 +158,25 @@
 }
 
 
-    #placar {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgba(145, 141, 137, 0.7);
-        color: white;
-        padding: 3px;
-        border-radius: 8px;
-        font-size: 1rem;
-        text-align: left;    
-        opacity: 0.8; /* Transparência aplicada a toda a div */
-        transform: scale(0.7); /* 80% do tamanho original */
-        transform-origin: top right; /* mantém a posição no canto superior direito */
+#placar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(145, 141, 137, 0.7);
+    color: white;
+    padding: 3px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: left;
+    opacity: 0.8;
+    /* Transparência aplicada a toda a div */
+    transform: scale(0.7);
+    /* 80% do tamanho original */
+    transform-origin: top right;
+    /* mantém a posição no canto superior direito */
 
 
-    }
+}
 
 
 /* Ajustes para dispositivos em modo horizontal (landscape) */
@@ -173,42 +185,50 @@
     #jogo {
         display: block;
     }
+
     #mensagem-orientacao {
         display: none;
     }
 
     #fundo {
-        width: 70vw; /* Ocupa 70% da largura da tela */
-        height: 90vh; /* Ajusta a altura para caber na tela */
-        left: 5vw; /* Centraliza horizontalmente */
+        width: 70vw;
+        /* Ocupa 70% da largura da tela */
+        height: 90vh;
+        /* Ajusta a altura para caber na tela */
+        left: 5vw;
+        /* Centraliza horizontalmente */
     }
 
     .painel {
         position: absolute;
         top: 15vh;
         left: 77vw;
-        gap: 5px; /* Diminui o espaçamento no modo paisagem */
+        gap: 5px;
+        /* Diminui o espaçamento no modo paisagem */
     }
 
     .painel button {
         padding: 5px;
         font-size: 0.8rem;
-        min-width: 60px; /* Reduz o tamanho mínimo dos botões no modo paisagem */
+        min-width: 60px;
+        /* Reduz o tamanho mínimo dos botões no modo paisagem */
     }
 
     #instrucao {
         left: 15vw;
     }
 
-   
+
 
     #div1 {
-        width: 7vw; /* Ajusta o tamanho do personagem no modo horizontal */
+        width: 7vw;
+        /* Ajusta o tamanho do personagem no modo horizontal */
         height: 7vw;
     }
 
     .figura {
-        width: 8vw; /* Ajusta o tamanho dos baús no modo horizontal */
+        width: 8vw;
+        /* Ajusta o tamanho dos baús no modo horizontal */
         height: 8vw;
     }
 }
@@ -232,29 +252,34 @@
 
     .telaInicial {
         background-color: blue;
-        justify-content: center; /* Centraliza tudo na vertical */
+        justify-content: center;
+        /* Centraliza tudo na vertical */
     }
 
     .figuras-container {
-        flex-direction: row; /* As figuras ficam lado a lado */
-        gap: 4vw; /* Espaçamento entre as figuras */
+        flex-direction: row;
+        /* As figuras ficam lado a lado */
+        gap: 4vw;
+        /* Espaçamento entre as figuras */
     }
 
     #bemVindo {
-        color: white; /* Texto mais visível no fundo azul */
+        color: white;
+        /* Texto mais visível no fundo azul */
     }
 
     #aviso {
-        color: rgb(236, 233, 18); /* Texto mais visível no fundo azul */
+        color: rgb(236, 233, 18);
+        /* Texto mais visível no fundo azul */
     }
 
-    
+
     #jogo {
-        display: none; /* Esconde o jogo */
+        display: none;
+        /* Esconde o jogo */
     }
 
     #mensagem-orientacao {
         display: block;
     }
 }
-
