@@ -9,356 +9,367 @@
 </head>
 <body>
 
+    <div class="telaInicial" id="mensagem-orientacao">
+        <div class="figuras-container">
+            <div class="gi" id="gi">
+                <img src="imagens/gi.jpg" alt="gi">
+            </div>           
+    
+            <div class="puro" id="puro">
+                <img src="imagens/coracao.jpg" alt="puro">
+            </div>
+        </div>
 
-    <div id="mensagem-orientacao">
-        Por favor, gire o celular para a posição horizontal para iniciar o jogo.
+        <br><br>
+    
+        <div id="bemVindo">Bem vindo ao jogo: <br><br> "O Coração Puro".</div>
+
+        <br><br>
+    
+        <div id="aviso">
+            *** ATENÇÃO *** <br><br> Este jogo funciona com o celular na posição horizontal
+        </div>
     </div>
-
-    <div id="jogo">
-        <!-- Todo o conteúdo do jogo vai aqui -->
     
 
 
+    <div id="jogo"> 
 
+            <div class="fundo" id="fundo">
 
+                <div id="instrucao">Olá aventureira Gi, descubra </br>
+                    em qual baú está o coração puro</div>
 
+                <div id="vamoslah">Vamos lá! Encontre o coração puro!</div>
 
-    <div class="fundo" id="fundo">
+                <div class="figura" id="figura1" style="left: 10vw; top: 12vw;">
+                    <img src="imagens/bau_fechado.jpg" alt="Figura 1" style="width: 100%; height: 100%;">
+                </div>
+                <div class="figura" id="figura2" style="left: 45vw; top: 12vw;">
+                    <img src="imagens/bau_fechado.jpg" alt="Figura 2" style="width: 100%; height: 100%;">
+                </div>
+                <div class="figura" id="figura3" style="left: 10vw; top: 30vw;">
+                    <img src="imagens/bau_fechado.jpg" alt="Figura 3" style="width: 100%; height: 100%;">
+                </div>
+                <div class="figura" id="figura4" style="left: 45vw; top: 30vw;">
+                    <img src="imagens/bau_fechado.jpg" alt="Figura 4" style="width: 100%; height: 100%;">
+                </div>
 
+                
+                <!-- Div1 é o personagem controlado pelo jogador -->
+                <div id="div1">
+                    <img src="imagens/gi.jpg" alt="gi" style="width: 80%; height: 100%;">
+                </div>
 
-        <div id="instrucao">Olá aventureira Gi, descubra </br>
-             em qual baú está o coração puro</div>
+                <!-- Nova div que aparecerá após a colisão -->
+                <div class="nova-figura" id="novaFigura" style="display: none;">
+                    <img src="imagens/coracao.jpg" alt="Nova Figura" style="width: 90%; height: 90%;">
+                </div>
 
-        <div id="vamoslah">Vamos lá! Encontre o coração puro!</div>
+                <div id="placar">SCORE
+                    <p>Acertos: <span id="contador-acertos">0</span></p>
+                    <p>Erros: <span id="contador-erros">0</span></p>
+                </div>
 
-        <div class="figura" id="figura1" style="left: 10vw; top: 12vw;">
-            <img src="imagens/bau_fechado.jpg" alt="Figura 1" style="width: 100%; height: 100%;">
-        </div>
-        <div class="figura" id="figura2" style="left: 45vw; top: 12vw;">
-            <img src="imagens/bau_fechado.jpg" alt="Figura 2" style="width: 100%; height: 100%;">
-        </div>
-        <div class="figura" id="figura3" style="left: 10vw; top: 30vw;">
-            <img src="imagens/bau_fechado.jpg" alt="Figura 3" style="width: 100%; height: 100%;">
-        </div>
-        <div class="figura" id="figura4" style="left: 45vw; top: 30vw;">
-            <img src="imagens/bau_fechado.jpg" alt="Figura 4" style="width: 100%; height: 100%;">
-        </div>
+                
+            </div>
+
+            <div class="painel">
+                <button type="button" id="iniciar">▶</button><hr>
+                <button type="button" id="reiniciar">🔄</button><hr>
+                <button type="button" id="acima">▲</button><hr>
+                <button type="button" id="esquerda">◀</button>
+                <button type="button" id="direita">▶</button><hr>
+                <button type="button" id="baixo">▼</button>
+            </div>
+
+            <div id="mensagem"></div>
 
         
-        <!-- Div1 é o personagem controlado pelo jogador -->
-        <div id="div1">
-            <img src="imagens/gi.jpg" alt="gi" style="width: 80%; height: 100%;">
-        </div>
 
-        <!-- Nova div que aparecerá após a colisão -->
-        <div class="nova-figura" id="novaFigura" style="display: none;">
-            <img src="imagens/coracao.jpg" alt="Nova Figura" style="width: 90%; height: 90%;">
-        </div>
-
-        <div id="placar">SCORE
-            <p>Acertos: <span id="contador-acertos">0</span></p>
-            <p>Erros: <span id="contador-erros">0</span></p>
-        </div>
-
-        
-    </div>
-
-    <div class="painel">
-        <button type="button" id="iniciar">▶</button><hr>
-        <button type="button" id="reiniciar">🔄</button><hr>
-        <button type="button" id="acima">▲</button><hr>
-        <button type="button" id="esquerda">◀</button>
-        <button type="button" id="direita">▶</button><hr>
-        <button type="button" id="baixo">▼</button>
-    </div>
-
-    <div id="mensagem"></div>
-
-   
-
-    
-
-    <script>
-
-    let musica; // Variável global para o áudio
-    let jogoIniciado = false; // Variável para controlar o estado do jogo
-
-    let acertos = 0;
-let erros = 0;
-  
-       
-      
-    
-    function iniciar() {
-    div1.style.left = "30vw";
-    div1.style.top = "20vw";
-    novaFigura.style.display = "none";
-    jogoIniciado = true;
-
-    document.getElementById("vamoslah").style.visibility = "visible";
-
-    // Reseta todas as figuras para a imagem original
-    resetarFiguras();
-
-    // Configura a figura vencedora aleatoriamente
-    definirFiguraVencedora();
-
-    document.querySelector("#iniciar").style.visibility = "hidden";
-    document.querySelector("#instrucao").style.visibility = "hidden";
-    document.getElementById("mensagem").innerText = "";
-
-    if (!musica) {
-        musica = new Audio('som/kids_play.mp3');
-    }
-    musica.play();
-}
-
-
-
-function reiniciar() {
-    div1.style.left = "1vw";
-    div1.style.top = "2vw";
-    novaFigura.style.display = "none";
-    jogoIniciado = false;
-
-    acertos = 0; // Reseta o contador de acertos
-    erros = 0;   // Reseta o contador de erros
-    document.getElementById("contador-acertos").innerText = acertos;
-    document.getElementById("contador-erros").innerText = erros;
-
-    // Limpa os valores do localStorage
-    localStorage.removeItem('acertos');
-    localStorage.removeItem('erros');
-
-    document.getElementById("mensagem").innerText = "";
-    document.getElementById("vamoslah").style.visibility = "hidden";
-    document.querySelector("#iniciar").style.visibility = "visible";
-    document.querySelector("#instrucao").style.visibility = "visible";
-
-    // Reseta todas as figuras para a imagem original
-    resetarFiguras();
-
-    definirFiguraVencedora(); // Reconfigura a figura vencedora
-
-    if (musica) {
-        musica.pause();
-        musica.currentTime = 0;
-    }
-}
-
-
-
-
-    document.querySelector("#iniciar").addEventListener("click", iniciar);
-    document.querySelector("#reiniciar").addEventListener("click", reiniciar);
-
-
-    function move(direcao) {
-        if (!jogoIniciado) return; // Impede a movimentação se o jogo não foi iniciado
-        if (direcao === "direita") moverDireita();
-        else if (direcao === "esquerda") moverEsquerda();
-        else if (direcao === "acima") moverAcima();
-        else if (direcao === "baixo") moverAbaixo();
-        verificarColisao();
             
-    }
 
+            <script>
 
-    document.querySelector("#iniciar").addEventListener("click", iniciar);
-    document.querySelector("#reiniciar").addEventListener("click", reiniciar);
-    document.querySelector("#acima").addEventListener("click", () => { move('acima') });
-    document.querySelector("#esquerda").addEventListener("click", () => { move('esquerda') });
-    document.querySelector("#direita").addEventListener("click", () => { move('direita') });
-    document.querySelector("#baixo").addEventListener("click", () => { move('baixo') });
+            let musica; // Variável global para o áudio
+            let jogoIniciado = false; // Variável para controlar o estado do jogo
 
-        function moverDireita() {
-            let div1Left = parseInt(getComputedStyle(div1).left);
-            let fundoWidth = parseInt(getComputedStyle(fundo).width);
-            let div1Width = parseInt(getComputedStyle(div1).width);
-            if (div1Left + div1Width + 5 <= fundoWidth) div1.style.left = div1Left + 5 + "px";
+            let acertos = 0;
+        let erros = 0;
+        
+            
+            
+            
+            function iniciar() {
+            div1.style.left = "30vw";
+            div1.style.top = "20vw";
+            novaFigura.style.display = "none";
+            jogoIniciado = true;
+
+            document.getElementById("vamoslah").style.visibility = "visible";
+
+            // Reseta todas as figuras para a imagem original
+            resetarFiguras();
+
+            // Configura a figura vencedora aleatoriamente
+            definirFiguraVencedora();
+
+            document.querySelector("#iniciar").style.visibility = "hidden";
+            document.querySelector("#instrucao").style.visibility = "hidden";
+            document.getElementById("mensagem").innerText = "";
+
+            if (!musica) {
+                musica = new Audio('som/kids_play.mp3');
+            }
+            musica.play();
         }
 
-        function moverEsquerda() {
-            let div1Left = parseInt(getComputedStyle(div1).left);
-            if (div1Left - 5 >= 0) div1.style.left = div1Left - 5 + "px";
-        }
-
-        function moverAcima() {
-            let div1Top = parseInt(getComputedStyle(div1).top);
-            if (div1Top - 5 >= 0) div1.style.top = div1Top - 5 + "px";
-        }
-
-        function moverAbaixo() {
-            let div1Top = parseInt(getComputedStyle(div1).top);
-            let fundoHeight = parseInt(getComputedStyle(fundo).height);
-            let div1Height = parseInt(getComputedStyle(div1).height);
-            if (div1Top + div1Height + 5 <= fundoHeight) div1.style.top = div1Top + 5 + "px";
-        }
 
 
+        function reiniciar() {
+            div1.style.left = "1vw";
+            div1.style.top = "2vw";
+            novaFigura.style.display = "none";
+            jogoIniciado = false;
 
-            function definirFiguraVencedora() {
-            // Seleciona todas as figuras
-            const figuras = document.querySelectorAll('.figura');
+            acertos = 0; // Reseta o contador de acertos
+            erros = 0;   // Reseta o contador de erros
+            document.getElementById("contador-acertos").innerText = acertos;
+            document.getElementById("contador-erros").innerText = erros;
 
-            // Remove a classe 'vencedora' de qualquer figura anterior
-            figuras.forEach(figura => figura.classList.remove('vencedora'));
+            // Limpa os valores do localStorage
+            localStorage.removeItem('acertos');
+            localStorage.removeItem('erros');
 
-            // Escolhe uma figura aleatória
-            const indiceAleatorio = Math.floor(Math.random() * figuras.length);
-            const figuraSelecionada = figuras[indiceAleatorio];
+            document.getElementById("mensagem").innerText = "";
+            document.getElementById("vamoslah").style.visibility = "hidden";
+            document.querySelector("#iniciar").style.visibility = "visible";
+            document.querySelector("#instrucao").style.visibility = "visible";
 
-            // Marca essa figura como vencedora
-            figuraSelecionada.classList.add('vencedora');
-            }   
+            // Reseta todas as figuras para a imagem original
+            resetarFiguras();
 
+            definirFiguraVencedora(); // Reconfigura a figura vencedora
 
-
-
-            function verificarColisao() {
-    const div1Left = parseInt(getComputedStyle(div1).left);
-    const div1Top = parseInt(getComputedStyle(div1).top);
-    const div1Width = parseInt(getComputedStyle(div1).width);
-    const div1Height = parseInt(getComputedStyle(div1).height);
-
-    const figuras = document.querySelectorAll('.figura');
-    figuras.forEach(figura => {
-        const figuraLeft = parseInt(getComputedStyle(figura).left);
-        const figuraTop = parseInt(getComputedStyle(figura).top);
-        const figuraWidth = parseInt(getComputedStyle(figura).width);
-        const figuraHeight = parseInt(getComputedStyle(figura).height);
-
-        if (
-            div1Left < figuraLeft + figuraWidth &&
-            div1Left + div1Width > figuraLeft &&
-            div1Top < figuraTop + figuraHeight &&
-            div1Top + div1Height > figuraTop
-        ) {
-            if (figura.classList.contains('vencedora')) {
-                finalizarJogo(figura);
-            } else {
-                erro(figura);
+            if (musica) {
+                musica.pause();
+                musica.currentTime = 0;
             }
         }
-    });
-}
-
-
-
-function finalizarJogo(figura) {
-    acertos++; // Incrementa o contador de acertos
-    document.getElementById("contador-acertos").innerText = acertos; // Atualiza o placar
-
-    // Salva o número de acertos no localStorage
-    localStorage.setItem('acertos', acertos);
-
-    // Resto do código existente...
-    novaFigura.style.display = "block";
-    novaFigura.style.left = figura.style.left;
-    novaFigura.style.top = figura.style.top;
-
-    jogoIniciado = false; // Desativa a movimentação
-    document.getElementById("mensagem").innerText = "Parabéns aventureira Gi! \n Você encontrou o coração puro!";
-    document.querySelector("#iniciar").style.visibility = "visible";
-    document.getElementById("vamoslah").style.visibility = "hidden";
-
-    if (musica) {
-        musica.pause();
-        musica.currentTime = 0;
-    }
-
-    const musicaFim = new Audio('som/winning.mp3');
-    musicaFim.play();
-}
 
 
 
 
-function erro(figura) {
-    erros++; // Incrementa o contador de erros
-    document.getElementById("contador-erros").innerText = erros; // Atualiza o placar
-
-    // Salva o número de erros no localStorage
-    localStorage.setItem('erros', erros);
-
-    // Altera a imagem da figura para a imagem de erro
-    const img = figura.querySelector('img');
-    if (img) {
-        img.src = "imagens/erro.jpg"; // Substitui a imagem pela de erro
-    }
-
-    // Resto do código existente...
-    jogoIniciado = false; // Desativa a movimentação
-    document.getElementById("mensagem").innerText = "Não foi desta vez! \n Tente novamente clicando em reiniciar.";
-    document.querySelector("#iniciar").style.visibility = "visible";
-    document.getElementById("vamoslah").style.visibility = "hidden";
-
-    if (musica) {
-        musica.pause();
-        musica.currentTime = 0;
-    }
-
-    const musicaErro = new Audio('som/somErro.mp3');
-    musicaErro.play();
-}
+            document.querySelector("#iniciar").addEventListener("click", iniciar);
+            document.querySelector("#reiniciar").addEventListener("click", reiniciar);
 
 
-function resetarFiguras() {
-    const figuras = document.querySelectorAll('.figura');
-    figuras.forEach(figura => {
-        const img = figura.querySelector('img');
-        if (img) {
-            img.src = "imagens/bau_fechado.jpg"; // Define a imagem original
+            function move(direcao) {
+                if (!jogoIniciado) return; // Impede a movimentação se o jogo não foi iniciado
+                if (direcao === "direita") moverDireita();
+                else if (direcao === "esquerda") moverEsquerda();
+                else if (direcao === "acima") moverAcima();
+                else if (direcao === "baixo") moverAbaixo();
+                verificarColisao();
+                    
+            }
+
+
+            document.querySelector("#iniciar").addEventListener("click", iniciar);
+            document.querySelector("#reiniciar").addEventListener("click", reiniciar);
+            document.querySelector("#acima").addEventListener("click", () => { move('acima') });
+            document.querySelector("#esquerda").addEventListener("click", () => { move('esquerda') });
+            document.querySelector("#direita").addEventListener("click", () => { move('direita') });
+            document.querySelector("#baixo").addEventListener("click", () => { move('baixo') });
+
+                function moverDireita() {
+                    let div1Left = parseInt(getComputedStyle(div1).left);
+                    let fundoWidth = parseInt(getComputedStyle(fundo).width);
+                    let div1Width = parseInt(getComputedStyle(div1).width);
+                    if (div1Left + div1Width + 5 <= fundoWidth) div1.style.left = div1Left + 5 + "px";
+                }
+
+                function moverEsquerda() {
+                    let div1Left = parseInt(getComputedStyle(div1).left);
+                    if (div1Left - 5 >= 0) div1.style.left = div1Left - 5 + "px";
+                }
+
+                function moverAcima() {
+                    let div1Top = parseInt(getComputedStyle(div1).top);
+                    if (div1Top - 5 >= 0) div1.style.top = div1Top - 5 + "px";
+                }
+
+                function moverAbaixo() {
+                    let div1Top = parseInt(getComputedStyle(div1).top);
+                    let fundoHeight = parseInt(getComputedStyle(fundo).height);
+                    let div1Height = parseInt(getComputedStyle(div1).height);
+                    if (div1Top + div1Height + 5 <= fundoHeight) div1.style.top = div1Top + 5 + "px";
+                }
+
+
+
+                    function definirFiguraVencedora() {
+                    // Seleciona todas as figuras
+                    const figuras = document.querySelectorAll('.figura');
+
+                    // Remove a classe 'vencedora' de qualquer figura anterior
+                    figuras.forEach(figura => figura.classList.remove('vencedora'));
+
+                    // Escolhe uma figura aleatória
+                    const indiceAleatorio = Math.floor(Math.random() * figuras.length);
+                    const figuraSelecionada = figuras[indiceAleatorio];
+
+                    // Marca essa figura como vencedora
+                    figuraSelecionada.classList.add('vencedora');
+                    }   
+
+
+
+
+                    function verificarColisao() {
+            const div1Left = parseInt(getComputedStyle(div1).left);
+            const div1Top = parseInt(getComputedStyle(div1).top);
+            const div1Width = parseInt(getComputedStyle(div1).width);
+            const div1Height = parseInt(getComputedStyle(div1).height);
+
+            const figuras = document.querySelectorAll('.figura');
+            figuras.forEach(figura => {
+                const figuraLeft = parseInt(getComputedStyle(figura).left);
+                const figuraTop = parseInt(getComputedStyle(figura).top);
+                const figuraWidth = parseInt(getComputedStyle(figura).width);
+                const figuraHeight = parseInt(getComputedStyle(figura).height);
+
+                if (
+                    div1Left < figuraLeft + figuraWidth &&
+                    div1Left + div1Width > figuraLeft &&
+                    div1Top < figuraTop + figuraHeight &&
+                    div1Top + div1Height > figuraTop
+                ) {
+                    if (figura.classList.contains('vencedora')) {
+                        finalizarJogo(figura);
+                    } else {
+                        erro(figura);
+                    }
+                }
+            });
         }
-    });
-}
 
 
 
-window.addEventListener('load', () => {
-    // Recupera os valores de acertos e erros do localStorage
-    const acertosSalvos = localStorage.getItem('acertos');
-    const errosSalvos = localStorage.getItem('erros');
+        function finalizarJogo(figura) {
+            acertos++; // Incrementa o contador de acertos
+            document.getElementById("contador-acertos").innerText = acertos; // Atualiza o placar
 
-    // Se houver valores salvos, usa-os
-    if (acertosSalvos !== null) {
-        acertos = parseInt(acertosSalvos);
-        document.getElementById("contador-acertos").innerText = acertos;
-    }
-    if (errosSalvos !== null) {
-        erros = parseInt(errosSalvos);
-        document.getElementById("contador-erros").innerText = erros;
-    }
+            // Salva o número de acertos no localStorage
+            localStorage.setItem('acertos', acertos);
 
-    // Adiciona as funções de eventos para os botões (repetindo o código existente)
-    document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
-    document.querySelector("#reiniciar").addEventListener("click", reiniciar);
-});
+            // Resto do código existente...
+            novaFigura.style.display = "block";
+            novaFigura.style.left = figura.style.left;
+            novaFigura.style.top = figura.style.top;
 
-        let div1 = document.getElementById("div1");
-        let fundo = document.getElementById("fundo");
-        let novaFigura = document.getElementById("novaFigura");
-        let figura2 = document.getElementById("figura2");
+            jogoIniciado = false; // Desativa a movimentação
+            document.getElementById("mensagem").innerText = "Parabéns aventureira Gi! \n Você encontrou o coração puro!";
+            document.querySelector("#iniciar").style.visibility = "visible";
+            document.getElementById("vamoslah").style.visibility = "hidden";
 
-        document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
+            if (musica) {
+                musica.pause();
+                musica.currentTime = 0;
+            }
 
-
-        function verificarOrientacao() {
-    if (window.innerHeight > window.innerWidth) {
-        // Posição vertical
-        document.getElementById("jogo").style.display = "none";
-        document.getElementById("mensagem-orientacao").style.display = "block";
-    } else {
-        // Posição horizontal
-        document.getElementById("jogo").style.display = "block";
-        document.getElementById("mensagem-orientacao").style.display = "none";
-    }
-}
+            const musicaFim = new Audio('som/winning.mp3');
+            musicaFim.play();
+        }
 
 
-    </script>
 
 
-</div>
+        function erro(figura) {
+            erros++; // Incrementa o contador de erros
+            document.getElementById("contador-erros").innerText = erros; // Atualiza o placar
+
+            // Salva o número de erros no localStorage
+            localStorage.setItem('erros', erros);
+
+            // Altera a imagem da figura para a imagem de erro
+            const img = figura.querySelector('img');
+            if (img) {
+                img.src = "imagens/erro.jpg"; // Substitui a imagem pela de erro
+            }
+
+            // Resto do código existente...
+            jogoIniciado = false; // Desativa a movimentação
+            document.getElementById("mensagem").innerText = "Não foi desta vez! \n Tente novamente clicando em reiniciar.";
+            document.querySelector("#iniciar").style.visibility = "visible";
+            document.getElementById("vamoslah").style.visibility = "hidden";
+
+            if (musica) {
+                musica.pause();
+                musica.currentTime = 0;
+            }
+
+            const musicaErro = new Audio('som/somErro.mp3');
+            musicaErro.play();
+        }
+
+
+        function resetarFiguras() {
+            const figuras = document.querySelectorAll('.figura');
+            figuras.forEach(figura => {
+                const img = figura.querySelector('img');
+                if (img) {
+                    img.src = "imagens/bau_fechado.jpg"; // Define a imagem original
+                }
+            });
+        }
+
+
+
+        window.addEventListener('load', () => {
+            // Recupera os valores de acertos e erros do localStorage
+            const acertosSalvos = localStorage.getItem('acertos');
+            const errosSalvos = localStorage.getItem('erros');
+
+            // Se houver valores salvos, usa-os
+            if (acertosSalvos !== null) {
+                acertos = parseInt(acertosSalvos);
+                document.getElementById("contador-acertos").innerText = acertos;
+            }
+            if (errosSalvos !== null) {
+                erros = parseInt(errosSalvos);
+                document.getElementById("contador-erros").innerText = erros;
+            }
+
+            // Adiciona as funções de eventos para os botões (repetindo o código existente)
+            document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
+            document.querySelector("#reiniciar").addEventListener("click", reiniciar);
+        });
+
+                let div1 = document.getElementById("div1");
+                let fundo = document.getElementById("fundo");
+                let novaFigura = document.getElementById("novaFigura");
+                let figura2 = document.getElementById("figura2");
+
+                document.querySelector("#iniciar").addEventListener("click", () => { iniciar() });
+
+
+                function verificarOrientacao() {
+            if (window.innerHeight > window.innerWidth) {
+                // Posição vertical
+                document.getElementById("jogo").style.display = "none";
+                document.getElementById("mensagem-orientacao").style.display = "block";
+            } else {
+                // Posição horizontal
+                document.getElementById("jogo").style.display = "block";
+                document.getElementById("mensagem-orientacao").style.display = "none";
+            }
+        }
+
+
+            </script>
+
+
+    </div>
 </body>
 </html>
